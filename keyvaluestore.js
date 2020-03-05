@@ -54,7 +54,8 @@ keyvaluestore.prototype.query = function (search, callback) {
       else {
         if (data['Count'] > 0) {
           data['Items'].forEach(item => {
-            items.push({ "inx": item.inx.N, "value": item.category.S, "key": item.keyword });
+            console.log(item);
+            items.push({ "inx": item.inx.N, "value": item.value.S, "key": item.keyword });
           });
           self.cache.set(search, items)
         }
@@ -80,18 +81,6 @@ keyvaluestore.prototype.get = function (search, inx, callback) {
     callback(null, self.cache.get(search));
   else {
 
-    /*
-     * 
-     * La función QUERY debe generar un arreglo de objetos JSON son cada
-     * una de los resultados obtenidos. (inx, value, key).
-     * Al final este arreglo debe ser insertado al cache. Y llamar a callback
-     * 
-     * Ejemplo:
-     *    var items = [];
-     *    items.push({"inx": data.Items[0].inx.N, "value": data.Items[0].value.S, "key": data.Items[0].key});
-     *    self.cache.set(search, items)
-     *    callback(err, items);
-     */
     let params = {
       Key: {
         "keyword": {
@@ -105,7 +94,7 @@ keyvaluestore.prototype.get = function (search, inx, callback) {
       let items = [];
       if (err) console.log(err, err.stack); // an error occurred
       else {
-        items.push({"inx": inx, "value": data.Item.url.S, "key": data.Item.keyword});
+        items.push({"inx": inx, "value": data.Item.value.S, "key": data.Item.keyword});
         self.cache.set(search, items)
       }       
       callback(err, items)

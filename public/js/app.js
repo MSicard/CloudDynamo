@@ -2,7 +2,7 @@ let myResult = [];
 let myPage = 1;
 
 function createImg(tag, value) {
-  $('#' + tag).html(`<img src=${value}" height="50" width="50">`)
+  $('#' + tag).html(`<img src=${value}" height="100" width="100">`)
 }
 
 function removeImg(tag) {
