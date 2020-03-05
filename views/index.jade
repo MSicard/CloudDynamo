@@ -1,0 +1,46 @@
+extends layout
+
+append scripts
+    script(src="js/app.js")
+
+block body
+    // The Dialog
+    #myModal.modal.fade(tabindex="-1" role="dialog" aria-hidden="true")
+        .modal-dialog
+            .modal-contenet
+                .modal-header
+                    button.myClose.close(type="button" data-dismiss="modal" aria-hidden="true") x
+                    h4.modal-title 
+                        #dialogtitle Title
+                .modal-body
+                    #searchresults.row
+                        .col-lg-12
+                            table
+                                tr
+                                    td#photo0 1
+                                    td(width='20')
+                                    td#photo1 2
+                                tr(height='20')
+                                    td(colspan='2')
+                                tr
+                                    td#photo2 3
+                                    td(width='20')
+                                    td#photo3 4  
+                            span#status Status
+                .modal-footer
+                    button#previous.btn.btn-primary(type='button') Previous
+                    button#next.btn.btn-primary(type='button') Next
+                    button.myClose.btn.btn-default(type='button', data-dismiss='modal') Close                    
+                    
+    // Input Area
+    .row(style="position: absolute; left: 50%; width: 500px; margin-left:-250px; top: 50%; height: 100px; margin-top:-50px")
+        .col-lg-12
+            h4 Image Search
+            .input-group
+                input(type="text" class="form-control" id="searchfield")
+                span(class="input-group-btn") 
+                    button(class="btn btn-default" id="searchbutton" type="button") Search
+                    span(id="author_name" style="color: grey") ITESO - 2017
+    
+    // Version Info
+    #version(style="position: absolute; left: 98%; width: 50px; margin-left:-25px; top: 96%; height: 50px; margin-top:-25px; font-size: 75%; color: grey") VXXX
